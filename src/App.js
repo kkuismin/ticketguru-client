@@ -17,6 +17,15 @@ function App() {
     }
   };
 
+  const handleChecking = async () => {
+    try {
+      const response = await axios.patch(`/api/tickets/${ticketId}/check`);
+      console.log("data", response.data)
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+    }
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -71,6 +80,9 @@ function App() {
             </div>
             <div>
               <strong>Checked:</strong> {ticketData.isChecked ? "Yes" : "No"}
+            </div>
+            <div>
+            <button onClick={handleChecking}>Mark ticket as used</button>
             </div>
           </div>
         )}
