@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./App.css";
+//import "./App.css";
+import CssBaseline from '@mui/material/CssBaseline';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import Typography from "@mui/material/Typography";
+import Textfield from "@mui/material/TextField";
+import { Box } from '@mui/system';
+import AppBar from '@mui/material/AppBar';
+import ToolBar from '@mui/material/Toolbar';
 
 function App() {
   const [ticketId, setTicketId] = useState("");
@@ -27,67 +35,45 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <input type="text" value={ticketId} onChange={(e) => setTicketId(e.target.value)} placeholder="Enter Ticket ID" />
-        <button onClick={handleSearch}>Search</button>
+    <Box>
+      <CssBaseline />
+      <AppBar>
+        <ToolBar>
+          <Typography variant="h5">TicketGuru</Typography>
+        </ToolBar>
+      </AppBar>
+      <Container maxWidth="sm" sx={{ marginTop: '100px', marginBottom: '50px', textAlign: 'center'}}>
+        <Typography variant="h5">Search for a ticket</Typography>
+        <Textfield sx={{ marginTop: 3 }} label="Enter Ticket ID" name={ticketId} onChange={(e) => setTicketId(e.target.value)} />
+        <Box sx={{ marginTop: 3 }}>
+          <Button variant="contained" onClick={handleSearch}>Search</Button>
+        </Box>
         {ticketData && (
-          <div className="ticket-result">
-            <div>
-              <strong>Ticket ID:</strong> {ticketData.ticketId}
-            </div>
-            <div>
-              <strong>Event Name:</strong> {ticketData.event.eventName}
-            </div>
-            <div>
-              <strong>Description:</strong> {ticketData.event.description}
-            </div>
-            <div>
-              <strong>Event Date:</strong> {ticketData.event.eventDate}
-            </div>
-            <div>
-              <strong>Event Time:</strong> {ticketData.event.eventTime}
-            </div>
-            <div>
-              <strong>Venue:</strong> {ticketData.event.venue.place}
-            </div>
-            <div>
-              <strong>Address:</strong> {ticketData.event.venue.streetAddress}
-            </div>
-            <div>
-              <strong>Postal Code:</strong> {ticketData.event.venue.postalcode.postalcode}
-            </div>
-            <div>
-              <strong>Post Office:</strong> {ticketData.event.venue.postalcode.postOffice}
-            </div>
-            <div>
-              <strong>Ticket Type:</strong> {ticketData.ticketType.ticketType}
-            </div>
-            <div>
-              <strong>Price:</strong> {ticketData.ticketType.price}
-            </div>
-            <div>
-              <strong>Transaction Amount:</strong> {ticketData.transaction.amount}
-            </div>
-            <div>
-              <strong>Transaction Date:</strong> {ticketData.transaction.transactionDate}
-            </div>
-            <div>
-              <strong>Transaction Time:</strong> {ticketData.transaction.transactionTime}
-            </div>
-            <div>
-              <strong>Transaction Status:</strong> {ticketData.transaction.transactionOk ? "Successful" : "Failed"}
-            </div>
-            <div>
-              <strong>Checked:</strong> {ticketData.isChecked ? "Yes" : "No"}
-            </div>
-            <div>
-            <button onClick={handleChecking}>Mark ticket as used</button>
-            </div>
-          </div>
+          <Box sx={{ marginTop: 3 }}>
+            <Typography variant="h5" sx={{ marginBottom: 3 }}>Ticket details</Typography>
+            <strong>Ticket ID:</strong> {ticketData.ticketId} <br/>
+            <strong>Event Name:</strong> {ticketData.event.eventName} <br/>
+            <strong>Description:</strong> {ticketData.event.description} <br/>
+            <strong>Event Date:</strong> {ticketData.event.eventDate} <br/>
+            <strong>Event Time:</strong> {ticketData.event.eventTime} <br/>
+            <strong>Venue:</strong> {ticketData.event.venue.place} <br/>
+            <strong>Address:</strong> {ticketData.event.venue.streetAddress} <br/>
+            <strong>Postal Code:</strong> {ticketData.event.venue.postalcode.postalcode} <br/>
+            <strong>Post Office:</strong> {ticketData.event.venue.postalcode.postOffice} <br/>
+            <strong>Ticket Type:</strong> {ticketData.ticketType.ticketType} <br/>
+            <strong>Price:</strong> {ticketData.ticketType.price} <br/>
+            <strong>Transaction Amount:</strong> {ticketData.transaction.amount} <br/>
+            <strong>Transaction Date:</strong> {ticketData.transaction.transactionDate} <br/>
+            <strong>Transaction Time:</strong> {ticketData.transaction.transactionTime} <br/>
+            <strong>Transaction Status:</strong> {ticketData.transaction.transactionOk ? "Successful" : "Failed"} <br/>
+            <strong>Checked:</strong> {ticketData.isChecked ? "Yes" : "No"} <br/>
+            <Box sx={{ marginTop: 3 }}>
+              <Button variant="contained" onClick={handleChecking}>Mark ticket as used</Button>
+            </Box>
+          </Box>
         )}
-      </header>
-    </div>
+      </Container>
+    </Box>
   );
 }
 
