@@ -19,7 +19,7 @@ function App() {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get(`/api/tickets/${ticketId}`);
+      const response = await axios.get(`http://ticketguru-ohjelmistoprojekti.rahtiapp.fi/api/tickets/${ticketId}`);
       setTicketData(response.data);
       console.log("ticketData: ", ticketData);
     } catch (error) {
@@ -30,7 +30,7 @@ function App() {
 
   const handleChecking = async () => {
     try {
-      const response = await axios.patch(`/api/tickets/${ticketId}/check`);
+      const response = await axios.patch(`http://ticketguru-ohjelmistoprojekti.rahtiapp.fi/api/tickets/${ticketId}/check`);
       console.log("data", response.data);
     } catch (error) {
       console.error("Error fetching data: ", error);
@@ -86,7 +86,7 @@ function App() {
                         {ticketData && ticketData.isChecked ? "Ticket is used" : "Mark ticket as used"}
                       </Button>
                     </Box>
-                    <QRCode value={`localhost:3000/check-in/${ticketData.ticketId}`} size={256} includeMargin={true} />
+                    <QRCode value={`/check-in/${ticketData.ticketId}`} size={256} includeMargin={true} />
                   </Box>
                 )}
               </Container>
