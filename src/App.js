@@ -19,7 +19,7 @@ function App() {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get(`http://ticketguru-ohjelmistoprojekti.rahtiapp.fi/api/tickets/${ticketId}`);
+      const response = await axios.get(`https://ticketguru-ohjelmistoprojekti.rahtiapp.fi/api/tickets/${ticketId}`, {});
       setTicketData(response.data);
       console.log("ticketData: ", ticketData);
     } catch (error) {
@@ -30,10 +30,15 @@ function App() {
 
   const handleChecking = async () => {
     try {
-      const response = await axios.patch(`http://ticketguru-ohjelmistoprojekti.rahtiapp.fi/api/tickets/${ticketId}/check`);
-      console.log("data", response.data);
+      const response = await axios.patch(`https://ticketguru-ohjelmistoprojekti.rahtiapp.fi/api/tickets/${ticketId}/check`);
+      console.log("Check-in data", response.data);
+
+      setTicketData({
+        ...ticketData,
+        isChecked: true,
+      });
     } catch (error) {
-      console.error("Error fetching data: ", error);
+      console.error("Error checking in ticket: ", error);
     }
   };
 

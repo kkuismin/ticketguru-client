@@ -10,12 +10,12 @@ const CheckInPage = () => {
   useEffect(() => {
     const fetchTicketStatusAndCheckIn = async () => {
       try {
-        const { data: ticketStatus } = await axios.get(`/api/tickets/${ticketId}`);
+        const { data: ticketStatus } = await axios.get(`https://ticketguru-ohjelmistoprojekti.rahtiapp.fi/api/tickets/${ticketId}`);
 
         if (ticketStatus.isChecked) {
           setCheckInStatus("alreadyCheckedIn");
         } else {
-          await axios.patch(`/api/tickets/${ticketId}/check`);
+          await axios.patch(`https://ticketguru-ohjelmistoprojekti.rahtiapp.fi/api/tickets/${ticketId}/check`);
           setCheckInStatus("success");
         }
       } catch (error) {
