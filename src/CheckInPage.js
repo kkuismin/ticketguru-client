@@ -6,6 +6,7 @@ import { CircularProgress, Box, Typography } from "@mui/material";
 const CheckInPage = () => {
   const { ticketId } = useParams();
   const [checkInStatus, setCheckInStatus] = useState("checking");
+  axios.defaults.withCredentials = true;
 
   useEffect(() => {
     const fetchTicketStatusAndCheckIn = async () => {
