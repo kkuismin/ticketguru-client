@@ -1,7 +1,6 @@
 {
   "name": "ticketguru-client",
   "version": "0.1.0",
-  "homepage": "https://kkuismin.github.io/ticketguru-client",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -43,6 +42,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "https://ticketguru-ohjelmistoprojekti.rahtiapp.fi/"
+  }
 }

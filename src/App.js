@@ -16,10 +16,11 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 function App() {
   const [ticketId, setTicketId] = useState("");
   const [ticketData, setTicketData] = useState(null);
+  axios.defaults.withCredentials = true;
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get(`https://ticketguru-ohjelmistoprojekti.rahtiapp.fi/api/tickets/${ticketId}`, {});
+      const response = await axios.get(`https://ticketguru-ohjelmistoprojekti.rahtiapp.fi/api/tickets/${ticketId}`, { withCredentials: true });
       setTicketData(response.data);
       console.log("ticketData: ", ticketData);
     } catch (error) {
@@ -30,7 +31,9 @@ function App() {
 
   const handleChecking = async () => {
     try {
-      const response = await axios.patch(`https://ticketguru-ohjelmistoprojekti.rahtiapp.fi/api/tickets/${ticketId}/check`);
+      const response = await axios.patch(`https://ticketguru-ohjelmistoprojekti.rahtiapp.fi/api/tickets/${ticketId}/check`, {
+        withCredentials: true,
+      });
       console.log("Check-in data", response.data);
 
       setTicketData({
