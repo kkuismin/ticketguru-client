@@ -58,7 +58,7 @@ function App() {
         </AppBar>
         <Routes>
           <Route
-            path="/"
+            path="/ticketguru-client/"
             element={
               <Container maxWidth="sm" sx={{ marginTop: "100px", marginBottom: "50px", textAlign: "center" }}>
                 <Typography variant="h5">Search for a ticket</Typography>
@@ -94,13 +94,13 @@ function App() {
                         {ticketData && ticketData.isChecked ? "Ticket is used" : "Mark ticket as used"}
                       </Button>
                     </Box>
-                    <QRCode value={`/check-in/${ticketData.ticketId}`} size={256} includeMargin={true} />
+                    <QRCode value={`/ticketguru-client/check-in/${ticketData.ticketId}`} size={256} includeMargin={true} />
                   </Box>
                 )}
               </Container>
             }
           />
-          <Route path="/check-in/:ticketId" element={<CheckInPage />} />
+          <Route path="/ticketguru-client/check-in/:ticketId" element={<CheckInPage />} />
         </Routes>
       </Box>
     </Router>
